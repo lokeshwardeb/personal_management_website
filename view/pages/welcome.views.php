@@ -5,6 +5,16 @@ $active_class = 'login';
 
 
 
+// the required files
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../model/sql.modal.php';
+
+$conn = new conn;
+
+$model = new modal_sql;
+$model->get_data("users");
+
+
 ?>
 
 <!-- login heading starts here -->
