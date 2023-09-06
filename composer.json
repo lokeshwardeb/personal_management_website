@@ -1,0 +1,19 @@
+{
+    "name": "personal_management_website/personal_management_website",
+    "description": "This website is designed and developed for the personal uses. This website is only for personal uses.",
+    "type": "project",
+    "license": "This website does not allow to anyone to use it except the owner Lokeshwar Deb. This website is only for the owner Lokeshwar Deb's personal use and it does not allow anyone to use the software. If anyone use it or tries to use it without the permission of the owner Lokeshwar Deb,, then it will be supposed to illeag and all the copyright law's will be applied.",
+    "autoload": {
+        "psr-4": {
+            "PersonalManagementWebsite\\PersonalManagementWebsite\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lokeshwar Deb"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}

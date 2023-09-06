@@ -8,11 +8,15 @@ $active_class = 'login';
 // the required files
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../model/sql.modal.php';
+require_once __DIR__ . '/../../controller/controllers.php';
 
 $conn = new conn;
 
 $model = new modal_sql;
 $model->get_data("users");
+
+$controllers = new controllers;
+
 
 
 ?>
@@ -49,7 +53,16 @@ $model->get_data("users");
         <div class="section_title text-center m-auto mt-4 fs-2 text-primary">
         Welcome to iManage
         </div>
-        <div class="section_box">
+        <div class="section_box mt-4">
+
+        <div class="info_box">
+            <?php
+
+            $controllers->login();            
+
+
+            ?>
+        </div>
 
         <form action="" method="post">
 
@@ -57,23 +70,23 @@ $model->get_data("users");
 
         <label for="username">Username</label>
 
-        <input type="text"  name="" id="username" class="form-control">
+        <input type="text"  name="username" id="username" class="form-control">
 
         
         </div>
 
         <div class="mb-4">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="" id="email">
+            <input type="email" class="form-control" name="user_email" id="email">
         </div>
 
         <div class="mb-4">
             <label for="password">Password</label>
-            <input type="password" name="" id="password" class="form-control">
+            <input type="password" name="password" id="password" class="form-control">
         </div>
 
         <div class="container">
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary" name="login">Login</button>
         </div>
 
         </form>

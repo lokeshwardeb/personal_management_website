@@ -1,5 +1,6 @@
 <?php
 
+$active_class = "Submit Your Otp";
 // initializing the header file
 require __DIR__ . '/inc/_header.php';
 

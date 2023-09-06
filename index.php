@@ -8,6 +8,7 @@ $Routes = [
     '/login_check_otp' => __DIR__ . '/view/pages/login_otp.views.php',
     '/signup' => __DIR__ . '/view/pages/signup.views.php',
     '/signup_check_otp' => __DIR__ . '/view/pages/login_otp.views.php',
+    '/dashboard' => __DIR__ . '/view/pages/dashboard.views.php',
 
 ];
 
