@@ -43,9 +43,37 @@ public function insert_data($table_name, $insert_table_names, $insert_tables_val
 
 }
 
+public function insert_data_where($table_name, $insert_table_names, $insert_tables_values, $grabpoints_and_grabpointvalues){
+
+    $sql = "INSERT INTO `$table_name` ($insert_table_names) VALUES ($insert_tables_values) WHERE $grabpoints_and_grabpointvalues;";
+    $result = $this->connect()->query($sql);
+
+    return $result;
+
+    // $sql = "INSERT INTO `$table_name` (`username`, `password`, `datetime`) VALUES ('$username', 's1', current_timestamp());";
+
+}
+
+
+
+public function update_data($table_name, $table_names_and_values, $grabpoints_and_grabpointvalues = ""){
+    
+    $sql = "UPDATE `$table_name` SET $table_names_and_values WHERE $grabpoints_and_grabpointvalues";
+    $result = $this->connect()->query($sql);
+
+    return $result;
 
 
 }
+
+
+}
+
+
+
+
+
+
 
 
 $conn = new conn;

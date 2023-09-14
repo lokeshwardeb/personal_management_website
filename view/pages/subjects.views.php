@@ -45,14 +45,14 @@ $controllers->check_loggedin_status();
                ?>
 
                 <div class="welcome_section fs-4">
-                    Welcome to iManage. How can I help you ?
+                    Subjects
                 </div>
 
                 <div class="description mt-4">
-                    <a href="" class="ms-4 mb-4">Go Subjects</a>
-                    <a href="" class="ms-4 mb-4">Go Libraries</a>
-                    <a href="" class="ms-4 mb-4">Go Subjects</a>
-                    <a href="" class="ms-4 mb-4">Go Subjects</a>
+                   <button type="submit" class="btn btn-primary"><a href="/insert_subjects" class=" text-light nav-link">Add Subjects</a></button> 
+                    <a href="" class="ms-4 mb-4">All Subjects</a>
+                    <a href="" class="ms-4 mb-4">Hard Subjects</a>
+                    <a href="" class="ms-4 mb-4">Easy Subjects</a>
                 </div>
 
 

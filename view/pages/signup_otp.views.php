@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/inc/session_start.php';
 
 $active_class = "Submit Your Otp";
 // initializing the header file

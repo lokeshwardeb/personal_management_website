@@ -1,7 +1,14 @@
 <?php
-
+require_once __DIR__ . '/inc/session_start.php';
+$active_class = "Verify your otp";
 // initializing the header file
-require __DIR__ . '/inc/_header.php';
+require_once __DIR__ . '/inc/_header.php';
+require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../model/sql.modal.php';
+require_once __DIR__ . '/../../controller/controllers.php';
+
+$controllers = new controllers;
+
 
 
 
@@ -14,6 +21,14 @@ require __DIR__ . '/inc/_header.php';
         Welcome to iManage
         </div>
         <div class="section_box">
+            <div class="box-display">
+                <?php
+
+                    echo $controllers->login_otp_verify();           
+
+
+                ?>
+            </div>
 
         <form action="" method="post">
 
@@ -21,7 +36,7 @@ require __DIR__ . '/inc/_header.php';
 
         <label for="username">Your otp </label>
 
-        <input type="text"  name="" id="username" class="form-control">
+        <input type="text"  name="submit_otp" id="username" class="form-control">
 
         
         </div>
@@ -30,7 +45,7 @@ require __DIR__ . '/inc/_header.php';
 
         
         <div class="container">
-            <button class="btn btn-primary">Confirm otp</button>
+            <button class="btn btn-primary" name="submit_otp_btn">Confirm otp</button>
         </div>
 
         </form>

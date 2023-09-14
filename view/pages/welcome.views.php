@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/inc/session_start.php';
+
 $active_class = 'login';
 // initializing the header file
 // require __DIR__ . '/inc/_header.php';
