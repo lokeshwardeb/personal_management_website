@@ -113,6 +113,12 @@ class controllers extends modal_sql
         }
     }
 
+    public function subject_info(){
+        $subject_name = $this->pure_data($_GET['subject_name']);
+        $result = $this->get_data_where("subjects", "`subject_name` = '$subject_name'");
+       return $result;
+    }
+
 
 
     public function login()

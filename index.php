@@ -12,6 +12,7 @@ $Routes = [
     '/logout' => __DIR__ . '/view/pages/logout.views.php',
     '/subjects' => __DIR__ . '/view/pages/subjects.views.php',
     '/insert_subjects' => __DIR__ . '/view/pages/insert_subjects.views.php',
+    '/subject_info' => __DIR__ . '/view/pages/subject_info.views.php',
 
 ];
 
