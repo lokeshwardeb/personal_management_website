@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 01:58 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Sep 14, 2023 at 06:48 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media`
---
-
-CREATE TABLE `media` (
-  `media_id` int(11) NOT NULL,
-  `media_name` varchar(255) NOT NULL,
-  `media_type` varchar(255) NOT NULL,
-  `media_subject_name` varchar(255) NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `media`
---
-
-INSERT INTO `media` (`media_id`, `media_name`, `media_type`, `media_subject_name`, `datetime`) VALUES
-(1, 'd', 'jpg', 'Physics', '2023-09-16 09:40:20'),
-(2, 'd', 'jpg', 'Physics', '2023-09-16 09:42:08'),
-(3, 'd', 'jpg', 'Physics', '2023-09-16 09:43:18'),
-(4, 'document', 'docx', 'physics', '2023-09-16 10:24:16');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `subjects`
 --
 
@@ -58,7 +34,7 @@ CREATE TABLE `subjects` (
   `subject_starting_semester` varchar(255) NOT NULL,
   `subject_opinion` varchar(255) NOT NULL,
   `datetime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subjects`
@@ -67,8 +43,7 @@ CREATE TABLE `subjects` (
 INSERT INTO `subjects` (`subject_id`, `subject_name`, `subject_description`, `subject_starting_semester`, `subject_opinion`, `datetime`) VALUES
 (1, '', '', '', '', '2023-09-14 22:44:59'),
 (2, '', '', '', '', '2023-09-14 22:45:43'),
-(3, 'f', 'f', 'f', 'f', '2023-09-14 22:45:56'),
-(4, 'Physics', 'Physics', '1st semester', 'Good', '2023-09-15 20:46:16');
+(3, 'f', 'f', 'f', 'f', '2023-09-14 22:45:56');
 
 -- --------------------------------------------------------
 
@@ -83,7 +58,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `otp` varchar(255) NOT NULL,
   `datetime` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
@@ -106,12 +81,6 @@ INSERT INTO `users` (`user_id`, `username`, `user_email`, `password`, `otp`, `da
 --
 
 --
--- Indexes for table `media`
---
-ALTER TABLE `media`
-  ADD PRIMARY KEY (`media_id`);
-
---
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -128,16 +97,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `media`
---
-ALTER TABLE `media`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
