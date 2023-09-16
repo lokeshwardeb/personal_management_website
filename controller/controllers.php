@@ -190,6 +190,18 @@ class controllers extends modal_sql
 
     }
 
+    
+    public function view_files(){
+
+        $subject_name = $this->pure_data($_GET['subject_name']);
+
+        $result = $this->get_data_where("media", "`media_subject_name` = '$subject_name'");
+
+        return $result;
+
+
+    }
+
 
 
     public function login()

@@ -20,7 +20,7 @@ $model->get_data("users");
 
 $controllers = new controllers;
 $controllers->check_loggedin_status();
-$controllers->check_subject_info_status();
+// $controllers->check_subject_info_status();
 
 
 ?>
