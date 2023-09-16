@@ -13,6 +13,7 @@ $Routes = [
     '/subjects' => __DIR__ . '/view/pages/subjects.views.php',
     '/insert_subjects' => __DIR__ . '/view/pages/insert_subjects.views.php',
     '/subject_info' => __DIR__ . '/view/pages/subject_info.views.php',
+    '/upload_files' => __DIR__ . '/view/pages/upload_files.views.php',
 
 ];
 

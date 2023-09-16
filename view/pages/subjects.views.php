@@ -64,7 +64,7 @@ $controllers->check_loggedin_status();
                        if($result){
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                echo '  <a href="subject_info?subject_name='.$row['subject_name'].'" class="mb-4 nav-link col-4  bg-light text-primary border-start border-primary  border-5 pt-4 fs-4" style="height: 250px !important; ">
+                                echo '  <a href="subject_info?subject_name='.$row['subject_name'].'" class="mb-4 nav-link col-4  bg-light text-primary border-start border-dark  border-5 pt-4 fs-4" style="height: 250px !important; ">
                                 <div class="ms-4" >'.$row['subject_name'].'</div>
                                 </a>';
                                 // echo $row['subject_name'];

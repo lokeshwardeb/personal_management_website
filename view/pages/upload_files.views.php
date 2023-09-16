@@ -20,7 +20,7 @@ $model->get_data("users");
 
 $controllers = new controllers;
 $controllers->check_loggedin_status();
-$controllers->check_subject_info_status();
+// $controllers->check_subject_info_status();
 
 
 ?>
@@ -90,30 +90,44 @@ $controllers->check_subject_info_status();
 
                             <div class="container files_section mt-4 mb-4">
                                 <div class="section_title fs-4 text-center">
-                                  Upload Subjects Files
+                                    Subjects Files
+                                </div>
+                                <div class="box_sections">
+                                    <?php
+
+                                    $controllers->upload_files();
+
+
+                                    ?>
                                 </div>
 
                                 <div class="section_files">
-                                    <div class="add_file_btn">
-                                        <?php
-
-                                        $result = $controllers->subject_info();
-                                        if($result){
-                                            if($result->num_rows > 0){
-                                                while($row = $result->fetch_assoc()){
-                                                    $subject_name = $row['subject_name'];
-                                                }
-                                            }
-                                        }
-
-                                        ?>
-                                       <a href="/upload_files?subject_name=<?php echo $subject_name; ?>"><button class="btn btn-primary mt-4 mb-4" type="button">Add files</button></a> 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-4">file1</div>
-                                        <div class="col-4">file2</div>
-                                        <div class="col-4">file3</div>
-                                    </div>
+                                   
+                                   <div class="container">
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="file_name">File Name</label>
+                                            <input type="text" name="file_name" id="" class="form-control" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="file_name">File Subject Name</label>
+                                            <input type="text" name="file_subject_name" id="" class="form-control"required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="upload_file">Upload File</label>
+                                            <input type="file" name="img" id="upload_file" class="form-control" required>
+                                        </div>
+                                        <!-- <div class="mb-3">
+                                            <label for="file_name">File Name</label>
+                                            <input type="text" name="file_name" id="" class="form-control">
+                                        </div> -->
+                                        <div class="mb-3">
+                                            
+                                            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                        
+                                    </form>
+                                   </div>
                                 </div>
 
                             </div>

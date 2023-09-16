@@ -83,7 +83,7 @@ class controllers extends modal_sql
 
     public function check_loggedin_status(){
 
-        if(!isset($_SESSION['login_status'])){
+        if(!isset($_SESSION['login_status']) || $_SESSION['login_status'] == ''){
             if(!$_SESSION['login_status']){
                 header("location: ./");
             }
@@ -114,9 +114,80 @@ class controllers extends modal_sql
     }
 
     public function subject_info(){
-        $subject_name = $this->pure_data($_GET['subject_name']);
-        $result = $this->get_data_where("subjects", "`subject_name` = '$subject_name'");
-       return $result;
+        if(isset($_GET['subject_name'])){
+            $subject_name = $this->pure_data($_GET['subject_name']);
+            $result = $this->get_data_where("subjects", "`subject_name` = '$subject_name'");
+            return $result;
+        }
+    }
+
+    public function check_subject_info_status(){
+        if(!isset($_GET['subject_name'])){
+            echo "Subject not selected";
+            header("location: ./subjects");
+        }
+    }
+
+    public function upload_files(){
+
+        if(isset($_POST['submit'])){
+            $file_name = $this->pure_data($_POST['file_name']);
+            $file_subject_name = $this->pure_data($_POST['file_subject_name']);
+            $upload_file = $_FILES['img']['name'];
+            $upload_file_tmp = $_FILES['img']['tmp_name'];
+
+            echo $file_name;
+
+
+            $file_extension =  pathinfo($upload_file, PATHINFO_EXTENSION);
+
+
+
+             // insert data on db
+             $result = $this->insert_data("media", "`media_name`, `media_type`, `media_subject_name`", "'$file_name', '$file_extension', '$file_subject_name'");
+
+
+
+
+            if($file_extension == 'jpg' || $file_extension == 'png' || $file_extension == 'gif'){
+                echo $this->alert("success", "The image file has been uploaded successfully");
+                $upload_dir = './assets/uploads/img/' . $file_name . '.' . $file_extension;
+
+               
+
+                if(move_uploaded_file($upload_file_tmp, $upload_dir)){
+                    echo $this->alert("success", "The file has been uploaded successfully !!");
+                }else{
+                    echo $this->alert("danger", "The file has not been suploaded successfully !!");
+                }
+
+            }elseif($file_extension == 'mp3' || $file_extension == 'mp4'){
+                echo $this->alert("success", "The video file has been uploaded successfully");
+                $upload_dir = './assets/uploads/videos/' . $file_name . '.' . $file_extension;
+
+                if(move_uploaded_file($upload_file_tmp, $upload_dir)){
+                    echo $this->alert("success", "The file has been uploaded successfully !!");
+                }else{
+                    echo $this->alert("danger", "The file has not uploaded successfully !!");
+                }
+            }else{
+                echo $this->alert("success", "The document file has been uploaded successfully");
+                $upload_dir = './assets/uploads/docs/' . $file_name . '.' . $file_extension;
+
+                if(move_uploaded_file($upload_file_tmp, $upload_dir)){
+                    echo $this->alert("success", "The file has been uploaded successfully !!");
+                }else{
+                    echo $this->alert("danger", "The file has not uploaded successfully !!");
+                }
+            }
+
+            echo '<pre>';
+            print_r($upload_file);
+            echo '</pre>';
+
+        }
+
+
     }
 
 
@@ -125,6 +196,7 @@ class controllers extends modal_sql
     {
 
         if (isset($_POST['login'])) {
+            $_SESSION['login_check_otp'] = 0;
 
             $username = $this->pure_data($_POST['username']);
             $user_email = $this->pure_data($_POST['user_email']);
