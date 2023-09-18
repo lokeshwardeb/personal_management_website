@@ -101,6 +101,7 @@ $controllers->check_subject_info_status();
                                         if ($result) {
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
+                                                    $subject_id = $row['subject_id'];
                                                     $subject_name = $row['subject_name'];
                                                 }
                                             }
@@ -108,11 +109,19 @@ $controllers->check_subject_info_status();
 
                                         ?>
                                         <a href="/upload_files?subject_name=<?php echo $subject_name; ?>"><button class="btn btn-primary mt-4 mb-4" type="button">Add files</button></a>
+                                        <a href="/rename_subject?subject_id=<?php echo $subject_id ?>"><button class="btn btn-primary mt-4 mb-4" type="button">Rename Subject</button></a>
+
+
+
+
+
+                                        <!-- <a href="/delete_file"> <button type="submit" class="btn btn-danger">Delete this file</button></a> -->
+                             
                                     </div>
                                     <div class="row">
                                         <?php
 
-                                        $result = $controllers->view_files();
+                                        $result = $controllers->show_files();
 
 
                                         if ($result) {
@@ -124,7 +133,7 @@ $controllers->check_subject_info_status();
 
                                                     
                                                     
-                                                    <a href="" class="col-4 bg-secondary border border-light text-light pt-4" style="height:250px; text-decoration: none !important;">
+                                                    <a href="view_files?subject_name='.$row['media_subject_name'].'&subject_file_name='.$row['media_name'].'" class="col-4 bg-secondary border border-light text-light pt-4" style="height:250px; text-decoration: none !important;">
                                                    <div class="fs-4"> '.$row['media_name'].'</div>
 
                                                     <br>

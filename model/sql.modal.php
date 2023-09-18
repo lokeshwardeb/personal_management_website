@@ -65,6 +65,24 @@ public function update_data($table_name, $table_names_and_values, $grabpoints_an
 
 
 }
+public function delete_data($table_name, $table_names_and_values, $grabpoints_and_grabpointvalues = ""){
+    
+    $sql = "DELETE FROM `$table_name` WHERE 0";
+    $result = $this->connect()->query($sql);
+
+    return $result;
+
+
+}
+public function delete_data_where($table_name, $grabpoints_and_grabpointvalues){
+    
+    $sql = "DELETE FROM `$table_name` WHERE `$table_name`.$grabpoints_and_grabpointvalues";
+    $result = $this->connect()->query($sql);
+
+    return $result;
+
+
+}
 
 
 }

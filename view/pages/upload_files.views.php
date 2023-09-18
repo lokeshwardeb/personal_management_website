@@ -111,7 +111,8 @@ $controllers->check_loggedin_status();
                                         </div>
                                         <div class="mb-3">
                                             <label for="file_name">File Subject Name</label>
-                                            <input type="text" name="file_subject_name" id="" class="form-control"required>
+                                            <input type="text" disabled  value="<?php echo $controllers->pure_data($_GET['subject_name']) ?>" class="form-control" >
+                                            <input type="hidden" name="file_subject_name" id="" value="<?php echo $controllers->pure_data($_GET['subject_name']) ?>" class="form-control"required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="upload_file">Upload File</label>

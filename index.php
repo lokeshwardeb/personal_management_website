@@ -15,6 +15,9 @@ $Routes = [
     '/subject_info' => __DIR__ . '/view/pages/subject_info.views.php',
     '/upload_files' => __DIR__ . '/view/pages/upload_files.views.php',
     '/view_files' => __DIR__ . '/view/pages/view_files.views.php',
+    '/check' => __DIR__ . '/view/pages/check_file.views.php',
+    '/rename_subject' => __DIR__ . '/view/pages/rename_subject.views.php',
+    '/delete_file' => __DIR__ . '/view/pages/delete_file.views.php',
 
 ];
 
