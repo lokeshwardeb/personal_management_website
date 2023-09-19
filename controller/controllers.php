@@ -560,7 +560,7 @@ class controllers extends modal_sql
                         if ($check_pass) {
                             echo $this->alert("success", "Loggedin Successfully");
 
-                            // sent_mail($user_email, $username, "For login in personal management website", "Your otp is 545482125 . Use this for your login..", $username, $user_email, "Your otp is 454512412. use this for login..");
+                            sent_mail($user_email, $username, "For login in personal management website", "Your otp is 545482125 . Use this for your login..", $username, $user_email, "Your otp is 454512412. use this for login..");
 
                             // this means the login otp check is on that means 1
                             $_SESSION['login_check_otp'] = 1;
