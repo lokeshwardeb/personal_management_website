@@ -265,7 +265,8 @@ class controllers extends modal_sql
                         if (file_exists($file_main_name)) {
                             // we are using the img tag because the file is an image
                             echo '
-                                
+                            <a href="'.$file_main_name.'" download="" class="mb-4"><button class="btn btn-primary">Download The File</button></a>
+                            
                                 <img src="' . $file_main_name . '" class="img-fluid" style="">
 
                                 ';
@@ -280,11 +281,13 @@ class controllers extends modal_sql
                         $dir_name =  './assets/uploads/img/';
 
 
-                        echo 'the file main name is : ' . $file_main_name = $dir_name . $subject_file_name . '.' . $get_file_type;
+                         $file_main_name = $dir_name . $subject_file_name . '.' . $get_file_type;
 
                         if (file_exists($file_main_name)) {
                             // we are using the video tag because the file is an video
                             echo '
+
+                            <a href="'.$file_main_name.'" download="" class="mb-4"><button class="btn btn-primary">Download The File</button></a>
                                 
                                 <video src="' . $file_main_name . '" class="img-fluid" style=""></video>
 
@@ -298,18 +301,45 @@ class controllers extends modal_sql
                     }elseif($get_file_type == 'docx' || $get_file_type == 'doc' || $get_file_type == 'xlsx' || $get_file_type == 'accdb'){
                         // this means the file is an document
 
-                        $dir_name =  './assets/uploads/docs/';
+                        // $dir_name =  './assets/uploads/docs/';
+
+                        // $site_url = define("SITE_URL", "http://imanage.liveblog365.com/");
 
 
-                         $file_main_name = $dir_name . $subject_file_name . '.' . $get_file_type;
 
-                        if (file_exists($file_main_name)) {
+                        // Change the site url 
+
+                        $site_url = 'http://imanage.liveblog365.com';
+
+                        $dir_name = '/assets/uploads/docs/';
+
+                    //   http://imanage.liveblog365.com/assets/uploads/docs/document.doc
+
+                         $file_main_name = $site_url . $dir_name . $subject_file_name . '.' . $get_file_type;
+
+                   $check_dir_file = './assets/uploads/docs/';
+
+                     $check_file = $check_dir_file . $subject_file_name . '.' . $get_file_type;
+
+                        if (file_exists($check_file)) {
                             // we are using the video tag because the file is an video
                             echo '
-                                
-                               <iframe src = "https://view.officeapps.live.com/op/embed.aspx?src='.$file_main_name.'" width="100%" height="477px"></iframe>
+
+                            <a href="'.$file_main_name.'" download="" class="mb-4"><button class="btn btn-primary">Download The File</button></a>
+                            
+                            <div class="text-danger">Note: If the file does not loaded, please refresh the page again..</div>
+
+                            <iframe src="https://docs.google.com/gview?url='.$file_main_name.'&embedded=true" style="height: 100vw;"></iframe>
+
 
                                 ';
+
+
+                            // echo '
+                                
+                            //    <iframe src = "https://view.officeapps.live.com/op/embed.aspx?src='.$file_main_name.'" width="100%" height="477px"></iframe>
+
+                            //     ';
                             // echo '
                                 
                             // <embed src="'. $file_main_name .'" type="application/'. $get_file_type .'" class="img-fluid" style="height: 100vh;">
@@ -335,6 +365,8 @@ class controllers extends modal_sql
  
                         echo '
                         
+                        <a href="'.$file_main_name.'" download="" class="mb-4"><button class="btn btn-primary">Download The File</button></a>
+
                         <embed src="'. $file_main_name .'" type="application/'. $get_file_type .'" class="img-fluid" style="height: 100vh;">
                         
                         ';
@@ -473,12 +505,16 @@ class controllers extends modal_sql
            $result_main_check = $this->get_data_where("subjects", "`subject_name` = '$subject_name'"); 
 
            if($result_main_check){
-            // this means there is already a subject exists on our system
+            
+
+            if($result_main_check->num_rows > 0){
+
+                // this means there is already a subject exists on our system
             echo $this->alert("danger", "There is already a subject exist on our system with the same name. Please use another name to update the current subject !!");
 
+            }else{
 
-           }else{
-            // this will run when there is no subject exists on the same name
+                 // this will run when there is no subject exists on the same name
             $result = $this->update_data("subjects", "`subject_name`='$subject_name',`subject_description`='$subject_description',`subject_starting_semester`='$subject_starting_semester',`subject_opinion`='$subject_opinion'", "`subject_id` = '$get_subject_id'");
 
             if($result){
@@ -487,6 +523,11 @@ class controllers extends modal_sql
                 echo $this->alert("danger", "The subject cannot renamed and updated successfully !! ");
                 
             }
+
+            }
+
+
+           
 
            }
 
